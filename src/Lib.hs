@@ -3,13 +3,24 @@ module Lib
     , languages
     , formatGrid
     , outputGrid
+    , findWord
+    , findWordInLine
     ) where
 
-formatGrid :: [String] -> String
+import Data.List(isInfixOf)
+type Grid = [String]
+
+formatGrid :: Grid -> String
 formatGrid = unlines  
 
-outputGrid :: [String] -> IO()
+outputGrid :: Grid -> IO()
 outputGrid grid = putStrLn (formatGrid grid)
+
+findWord :: Grid -> String -> Bool
+findWord grid word = or $ map (findWordInLine word) grid
+
+findWordInLine :: String -> String -> Bool
+findWordInLine = isInfixOf
 
 grid = [  "__C________R___"
         , "__SI________U__" 
