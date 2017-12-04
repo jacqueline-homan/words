@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2017-12-01 12:39:20.914413 UTC
+2017-12-04 06:09:21.217468 UTC
 
 interface main@main:Main 8002
-  interface hash: f4aea0ffc41060aa6f8899744cb8a215
-  ABI hash: 200cc8a715600696ae159186e5cb2fb1
+  interface hash: dab52fd0a8cdb50163f3ce6d8627249a
+  ABI hash: 9280854fb3942ee0b39ea51c7cacb4be
   export-list hash: f480b6668b51c570c9f476e83ca9ab2d
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 18890c475136d256121154199ab54742
@@ -25,7 +25,8 @@ family instance modules: base-4.9.1.0:Control.Applicative
                          base-4.9.1.0:GHC.TypeLits
 import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
 import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
-import  -/  words-0.1.0.0@words-0.1.0.0-CYI3KknegDpJL5eLhQz4hl:Lib c42f85da86ebf7d27d356f837290179c
+import  -/  words-0.1.0.0@words-0.1.0.0-CYI3KknegDpJL5eLhQz4hl:Data 39bc4c572ce575449c4dbbad891f3e1d
+import  -/  words-0.1.0.0@words-0.1.0.0-CYI3KknegDpJL5eLhQz4hl:Lib d624ed7e6e3a1ced2a9fac6a658b8850
 d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
@@ -38,12 +39,12 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
-78d6c9bb6ef94ab3433684f3d8a7f442
+bfbb1654449b1f0265b09b1950884d31
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-73b0b5eb6596c8a71bed5f7d556391f8
+f1ed0f2d81f1c07f5b81f4c2841e6306
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -52,10 +53,10 @@ d6831ef04cb9301b090dfae6f7bb7ec7
                 (\ (eta :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
                  GHC.IO.Handle.Text.hPutStr2
                    GHC.IO.Handle.FD.stdout
-                   (Data.OldList.unlines Lib.grid)
+                   (Data.OldList.unlines Data.grid)
                    GHC.Types.True
                    eta) -}
-ccb1ab7f3244ae37fea7252d59b7c55e
+fb09f0f407039f23872a87d560806f92
   main2 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)

@@ -1,7 +1,5 @@
 module Lib
-    ( grid
-    , languages
-    , formatGrid
+    ( formatGrid
     , outputGrid
     , findWord
     , findWords
@@ -12,6 +10,7 @@ module Lib
 
 import Data.List(isInfixOf, transpose)
 import Data.Maybe(catMaybes)
+import Data
 
 type Grid = [String]
 
@@ -43,43 +42,17 @@ skew (x:xs) = x : skew (map indent xs)
 findWord :: Grid -> String -> Maybe String
 -- findWord grid word = or $ map (findWordInLine word) grid
 findWord grid word = 
-    let lines = grid ++ (map reverse grid)
+    let lines = getLines grid -- We've refactores and abstracted out `grid ++ (map reverse grid)`
     --in or $ map (findWordInLine word) lines
         found = or $ map (findWordInLine word) lines 
     in if found then Just word else Nothing
 
---findWords :: Grid -> [String] -> [Bool]
+findWords :: Grid -> [String] -> [String]
 findWords grid words = 
     let foundWords = map (findWord grid) words 
     in catMaybes foundWords
 
 findWordInLine :: String -> String -> Bool
 findWordInLine = isInfixOf
-
-grid = [  "__C________R___"
-        , "__SI________U__" 
-        , "__HASKELL____B_"
-        , "__A__A_____S__Y"
-        , "__R___B___C____"
-        , "__PHP____H_____"
-        , "____S_LREP_____"
-        , "____I__M_Y__L__"
-        , "____L_E__T_O___"
-        , "_________HB____"
-        , "_________O_____"
-        , "________CN_____"
-       ]
-
-languages = [ "BASIC"
-            , "COBOL"
-            , "CSHARP"
-            , "HASKELL"
-            , "LISP"
-            , "PERL"
-            , "PHP"
-            , "PYTHON"
-            , "RUBY"
-            , "SCHEME"
-            ]
 
 
