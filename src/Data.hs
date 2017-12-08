@@ -1,8 +1,9 @@
 module Data (grid
-			, languages
-			) where
+            , languages
+            ) where
 
-
+-- copy of word grid
+grid :: [String]
 grid = [  "__C________R___"
         , "__SI________U__" 
         , "__HASKELL____B_"
@@ -16,7 +17,8 @@ grid = [  "__C________R___"
         , "_________O_____"
         , "________CN_____"
        ]
-
+-- finite list of included language names in the word grid
+languages :: [String]
 languages = [ "BASIC"
             , "COBOL"
             , "CSHARP"
@@ -28,3 +30,4 @@ languages = [ "BASIC"
             , "RUBY"
             , "SCHEME"
             ]
+

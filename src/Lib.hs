@@ -42,7 +42,7 @@ skew (x:xs) = x : skew (map indent xs)
 findWord :: Grid -> String -> Maybe String
 -- findWord grid word = or $ map (findWordInLine word) grid
 findWord grid word = 
-    let lines = getLines grid -- We've refactores and abstracted out `grid ++ (map reverse grid)`
+    let lines = getLines grid -- We've refactored and abstracted out `grid ++ (map reverse grid)`
     --in or $ map (findWordInLine word) lines
         found = or $ map (findWordInLine word) lines 
     in if found then Just word else Nothing
