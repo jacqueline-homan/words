@@ -1,4 +1,7 @@
 import Control.Monad (guard)
+
+data Cell = Cell (Integer, Integer) Char deriving (Eq, Ord, Show)
+
 -- sample of coordinate grid
 coords = [ [(0,0), (0,1), (0,2), (0,3), (0,4), (0,5), (0,6), (0,7)]
          , [(1,0), (1,1), (1,2), (1,3), (1,4), (1,5), (1,6), (1,7)]
@@ -72,6 +75,7 @@ cols8 = repeat8 [0..7]
 rows8 = map repeat8 [0..7]
 
 zipOverGrid = zipWith zip
+zipOverGridWith = zipWith . zipWith
 grid8 = zipOverGrid rows8 cols8
 
 coordsInf = zipOverGrid rows cols
