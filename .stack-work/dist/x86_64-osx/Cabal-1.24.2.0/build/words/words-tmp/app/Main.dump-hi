@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2017-12-10 12:53:47.310823 UTC
+2017-12-10 13:20:01.457463 UTC
 
 interface main@main:Main 8002
-  interface hash: a77f87d1789fe2ca93d6bcd5f748799d
-  ABI hash: 8bb8a19431afe9d22e2902f96c4290e6
+  interface hash: 615aec6a154a4f0d01caf4d4497fd4d6
+  ABI hash: d3cfe41113547c5c5fc3bf052072730b
   export-list hash: 8f7da2f7457e419e8d4b08fec7c71dd6
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 18890c475136d256121154199ab54742
@@ -32,6 +32,9 @@ family instance modules: base-4.9.1.0:Control.Applicative
                          containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
                          containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
 import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:GHC.IO.Handle ba98a5b34d78cbf48b41fe58a3735c69
+import  -/  base-4.9.1.0:GHC.IO.Handle.FD bf0291e0f2b6c0eca5446f986999f1cc
+import  -/  base-4.9.1.0:GHC.IO.Handle.Types 17aa0e2ab137800e3a31992d780c071f
 import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
 import  -/  base-4.9.1.0:System.IO c9de64c5f5407c4cf1c52500c4d15200
 import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
@@ -49,19 +52,25 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
-c1fbdbf4a23b9862625d7d06aa71f359
+e8444090ab17caea8e0eb92a32ec73a5
   main :: GHC.Types.IO ()
-  {- Arity: 1,
+  {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-7826074fbaa4eda00871d3b51b303f69
+16b05d2f4cc78b9ba98ff63c6170272c
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 1, Unfolding: (Main.main7 Main.main2) -}
-ec0f468850dbff27dd89f62f33451582
+  {- Arity: 1, Strictness: <S,U>,
+     Unfolding: (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case GHC.IO.Handle.hSetBuffering1
+                        GHC.IO.Handle.FD.stdout
+                        GHC.IO.Handle.Types.NoBuffering
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 Main.main7 Main.main2 ipv }) -}
+25c1fbead2dc0d3d81f5495aba80e7e4
   main2 :: Lib.Game
-  {- Strictness: m, Unfolding: (Lib.Game Main.main5 Main.main3) -}
+  {- Unfolding: (Lib.Game Main.main5 Main.main3) -}
 f2633e97e03f98857edb9f0f1e685a13
   main3 ::
     Data.Map.Base.Map GHC.Base.String (GHC.Base.Maybe [Lib.Cell])
@@ -100,7 +109,7 @@ b7657f1efeb11a81dec6be85ef3d5b98
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 2, Strictness: <L,U(U,U)><S,U> -}
-b19954994ff3f60fd55169d208b05832
+02b31339b889a4b75b89b16daaf11366
   main8 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)

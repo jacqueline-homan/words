@@ -2,11 +2,13 @@ module Main where
 
 import Lib
 import Data
+import System.IO 
 
 main :: IO ()
 main = do 
     --let gwc = gridWithCoords grid
     let game = makeGame grid languages 
+    hSetBuffering stdout NoBuffering 
     playTurn game 
 
 
