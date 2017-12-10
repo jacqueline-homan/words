@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2017-12-10 12:53:45.73418 UTC
+2017-12-10 13:55:18.350517 UTC
 
-interface words-0.1.0.0-2BohWveyA5lK0ewgybZufq:Lib 8002
-  interface hash: 2af89939825f1dd7b125998463cbf3e9
-  ABI hash: 10fc7f4b0f2dae6243e08fe3a4dc63ed
-  export-list hash: c893ae80ea3a4d69054957a02612b600
-  orphan hash: cce5b68f639e1f5991b5b65c02350761
+interface words-0.1.0.0-LISqhhIiZ4617lGqKY5VXc:Lib 8002
+  interface hash: 2b785b151c1c53af1c9c6e4ef1779e5d
+  ABI hash: 4e8f53d6c1ce07f940f7016c9737b38d
+  export-list hash: dc8c3a05f69e1b92f68a660eb1f62284
+  orphan hash: 7fa56b7d3dae50019773f55de8e1369f
   flag hash: f6624f22fcdd76ed0ac6625466e2d712
   sig of: Nothing
   used TH splices: False
@@ -14,6 +14,7 @@ interface words-0.1.0.0-2BohWveyA5lK0ewgybZufq:Lib 8002
 exports:
   Lib.cell2char
   Lib.completed
+  Lib.fillInBlanks
   Lib.findWord
   Lib.findWordInCellLinePrefix
   Lib.findWordInLine
@@ -22,6 +23,7 @@ exports:
   Lib.formatGrid
   Lib.gridWithCoords
   Lib.makeGame
+  Lib.makeRandomGrid
   Lib.outputGrid
   Lib.playGame
   Lib.score
@@ -35,8 +37,12 @@ module dependencies:
 package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.1.0*
                       containers-0.5.7.1@containers-0.5.7.1
                       deepseq-1.4.2.0@deepseq-1.4.2.0 ghc-prim-0.5.0.0
-                      integer-gmp-1.0.0.1
+                      integer-gmp-1.0.0.1 random-1.1@random-1.1-9tceXaeYIMZ4JrKq20Egog*
+                      time-1.6.0.1@time-1.6.0.1
 orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+         time-1.6.0.1@time-1.6.0.1:Data.Time.Calendar.Gregorian
+         time-1.6.0.1@time-1.6.0.1:Data.Time.Format.Parse
+         time-1.6.0.1@time-1.6.0.1:Data.Time.LocalTime.LocalTime
 family instance modules: base-4.9.1.0:Control.Applicative
                          base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
                          base-4.9.1.0:Data.Functor.Const base-4.9.1.0:Data.Functor.Identity
@@ -61,12 +67,13 @@ import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base 8b155a212edaca6c
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
 import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
 import  -/  integer-gmp-1.0.0.1:GHC.Integer.Type 318df275d77dcdb18e0006d8d7870c2a
-54286c75518fad41f009f50a0ca202b3
+import  -/  random-1.1@random-1.1-9tceXaeYIMZ4JrKq20Egog:System.Random cc3ef358c669b194cf9fe94db6f2430f
+baa386c6efd40b5f3cc6bb5e664afd33
   $fEqCell :: GHC.Classes.Eq Lib.Cell
   DFunId
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:. @ Lib.Cell Lib.$fEqCell_$c== Lib.$fEqCell_$c/= -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fEqCell_$c/= :: Lib.Cell -> Lib.Cell -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
      Unfolding: InlineRule (2, True, False)
@@ -74,7 +81,7 @@ import  -/  integer-gmp-1.0.0.1:GHC.Integer.Type 318df275d77dcdb18e0006d8d7870c2
                  case Lib.$fEqCell_$c== a b of wild {
                    GHC.Types.False -> GHC.Types.True
                    GHC.Types.True -> GHC.Types.False }) -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fEqCell_$c== :: Lib.Cell -> Lib.Cell -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
      Unfolding: (\ (ds :: Lib.Cell) (ds1 :: Lib.Cell) ->
@@ -97,7 +104,7 @@ import  -/  integer-gmp-1.0.0.1:GHC.Integer.Type 318df275d77dcdb18e0006d8d7870c2
                    -> case ds1 of wild1 {
                         Lib.Cell ipv ipv1 -> GHC.Types.False
                         Lib.Indent -> GHC.Types.True } }) -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fOrdCell :: GHC.Classes.Ord Lib.Cell
   DFunId
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -111,7 +118,7 @@ import  -/  integer-gmp-1.0.0.1:GHC.Integer.Type 318df275d77dcdb18e0006d8d7870c2
                   Lib.$fOrdCell_$c>=
                   Lib.$fOrdCell_$cmax
                   Lib.$fOrdCell_$cmin -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fOrdCell_$c< :: Lib.Cell -> Lib.Cell -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
      Unfolding: (\ (a :: Lib.Cell) (b :: Lib.Cell) ->
@@ -131,7 +138,7 @@ import  -/  integer-gmp-1.0.0.1:GHC.Integer.Type 318df275d77dcdb18e0006d8d7870c2
                              GHC.Types.GT -> GHC.Types.False } } }
                         Lib.Indent -> GHC.Types.True }
                    Lib.Indent -> case b of wild1 { DEFAULT -> GHC.Types.False } }) -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fOrdCell_$c<= :: Lib.Cell -> Lib.Cell -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
      Unfolding: (\ (a :: Lib.Cell) (b :: Lib.Cell) ->
@@ -154,7 +161,7 @@ import  -/  integer-gmp-1.0.0.1:GHC.Integer.Type 318df275d77dcdb18e0006d8d7870c2
                    -> case b of wild1 {
                         Lib.Cell ipv ipv1 -> GHC.Types.False
                         Lib.Indent -> GHC.Types.True } }) -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fOrdCell_$c> :: Lib.Cell -> Lib.Cell -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
      Unfolding: (\ (a :: Lib.Cell) (b :: Lib.Cell) ->
@@ -177,7 +184,7 @@ import  -/  integer-gmp-1.0.0.1:GHC.Integer.Type 318df275d77dcdb18e0006d8d7870c2
                    -> case b of wild1 {
                         Lib.Cell ipv ipv1 -> GHC.Types.True
                         Lib.Indent -> GHC.Types.False } }) -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fOrdCell_$c>= :: Lib.Cell -> Lib.Cell -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
      Unfolding: (\ (a :: Lib.Cell) (b :: Lib.Cell) ->
@@ -197,7 +204,7 @@ import  -/  integer-gmp-1.0.0.1:GHC.Integer.Type 318df275d77dcdb18e0006d8d7870c2
                              GHC.Types.GT -> GHC.Types.True } } }
                         Lib.Indent -> GHC.Types.False }
                    Lib.Indent -> case b of wild1 { DEFAULT -> GHC.Types.True } }) -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fOrdCell_$ccompare :: Lib.Cell -> Lib.Cell -> GHC.Types.Ordering
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
      Unfolding: (\ (a :: Lib.Cell) (b :: Lib.Cell) ->
@@ -220,21 +227,21 @@ import  -/  integer-gmp-1.0.0.1:GHC.Integer.Type 318df275d77dcdb18e0006d8d7870c2
                    -> case b of wild1 {
                         Lib.Cell ipv ipv1 -> GHC.Types.GT
                         Lib.Indent -> GHC.Types.EQ } }) -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fOrdCell_$cmax :: Lib.Cell -> Lib.Cell -> Lib.Cell
   {- Arity: 2, HasNoCafRefs, Strictness: <S,U><S,U>,
      Unfolding: InlineRule (2, True, False)
                 (\ (x1 :: Lib.Cell) (y :: Lib.Cell) ->
                  case Lib.$fOrdCell_$c<= x1 y of wild {
                    GHC.Types.False -> x1 GHC.Types.True -> y }) -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fOrdCell_$cmin :: Lib.Cell -> Lib.Cell -> Lib.Cell
   {- Arity: 2, HasNoCafRefs, Strictness: <S,U><S,U>,
      Unfolding: InlineRule (2, True, False)
                 (\ (x1 :: Lib.Cell) (y :: Lib.Cell) ->
                  case Lib.$fOrdCell_$c<= x1 y of wild {
                    GHC.Types.False -> y GHC.Types.True -> x1 }) -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fShowCell :: GHC.Show.Show Lib.Cell
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -243,20 +250,20 @@ import  -/  integer-gmp-1.0.0.1:GHC.Integer.Type 318df275d77dcdb18e0006d8d7870c2
                   Lib.$fShowCell_$cshowsPrec
                   Lib.$fShowCell_$cshow
                   Lib.$fShowCell_$cshowList -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fShowCell1 :: Lib.Cell -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (Lib.$fShowCell_$cshowsPrec Lib.$fShowCell2) -}
-106966790000a14d6a3d3f1fb9680710
+01fecb7968a1b89cbfb8764bfeb0d0e0
   $fShowCell2 :: GHC.Types.Int
   {- HasNoCafRefs, Unfolding: (GHC.Types.I# 0#) -}
-e417c207500ab95ec6be3bb7ea081218
+04fcff603119bd0c3a2042ef59ce6259
   $fShowCell3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Indent"#) -}
-f3988a11c7d5b92fbfa5ee3503e2a8a9
+18af5d30d6c8e2c7b34aae06fd0bfb33
   $fShowCell4 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Cell "#) -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fShowCell_$cshow :: Lib.Cell -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U>,
      Unfolding: InlineRule (1, True, False)
@@ -265,11 +272,11 @@ f3988a11c7d5b92fbfa5ee3503e2a8a9
                    GHC.Show.shows22
                    x1
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fShowCell_$cshowList :: [Lib.Cell] -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (GHC.Show.showList__ @ Lib.Cell Lib.$fShowCell1) -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   $fShowCell_$cshowsPrec ::
     GHC.Types.Int -> Lib.Cell -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <L,1*U(U)><S,1*U><L,U>,
@@ -342,7 +349,7 @@ f3988a11c7d5b92fbfa5ee3503e2a8a9
                                 (g (GHC.Types.: @ GHC.Types.Char GHC.Show.shows4 eta))) } }
                    Lib.Indent
                    -> GHC.Base.++ @ GHC.Types.Char Lib.$fShowCell3 eta }) -}
-76e1c48c953eb4187ca8ddb7b6571306
+fb14b325adc3ac9807f881dbfc004da8
   $fShowGame :: GHC.Show.Show Lib.Game
   DFunId
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -351,13 +358,13 @@ f3988a11c7d5b92fbfa5ee3503e2a8a9
                   Lib.$fShowGame_$cshowsPrec
                   Lib.$fShowGame_$cshow
                   Lib.$fShowGame_$cshowList -}
-76e1c48c953eb4187ca8ddb7b6571306
+fb14b325adc3ac9807f881dbfc004da8
   $fShowGame1 :: Lib.Game -> GHC.Show.ShowS
   {- Arity: 1,
      Unfolding: (\ (w :: Lib.Game) ->
                  case w of ww { Lib.Game ww1 ww2 ->
                  Lib.$w$cshowsPrec 0# ww1 ww2 }) -}
-76e1c48c953eb4187ca8ddb7b6571306
+fb14b325adc3ac9807f881dbfc004da8
   $fShowGame_$cshow :: Lib.Game -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U(U,1*U)>,
      Unfolding: InlineRule (1, True, False)
@@ -366,11 +373,11 @@ f3988a11c7d5b92fbfa5ee3503e2a8a9
                    GHC.Show.shows22
                    x1
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-76e1c48c953eb4187ca8ddb7b6571306
+fb14b325adc3ac9807f881dbfc004da8
   $fShowGame_$cshowList :: [Lib.Game] -> GHC.Show.ShowS
   {- Arity: 2,
      Unfolding: (GHC.Show.showList__ @ Lib.Game Lib.$fShowGame1) -}
-76e1c48c953eb4187ca8ddb7b6571306
+fb14b325adc3ac9807f881dbfc004da8
   $fShowGame_$cshowsPrec ::
     GHC.Types.Int -> Lib.Game -> GHC.Show.ShowS
   {- Arity: 2, Strictness: <S(S),1*U(U)><S,1*U(U,1*U)>,
@@ -380,12 +387,12 @@ f3988a11c7d5b92fbfa5ee3503e2a8a9
                  case w of ww { GHC.Types.I# ww1 ->
                  case w1 of ww2 { Lib.Game ww3 ww4 ->
                  Lib.$w$cshowsPrec ww1 ww3 ww4 } }) -}
-0891c33433e0399b295a664815c84a52
+63a6022029ba6a3cabd2296995c95c60
   $s$fShowMap_$cshowsPrec1 :: GHC.Show.Show [Lib.Cell]
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Lib.$s$fShowMap_$cshowsPrec_$s$fShow[] -}
-5c1589672a2d11bce296adb6aa006190
+2dae488d6d5c23a3ecf3dc265252bb53
   $s$fShowMap_$cshowsPrec_$s$fShowMaybe ::
     GHC.Show.Show (GHC.Base.Maybe [Lib.Cell])
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
@@ -398,7 +405,7 @@ f3988a11c7d5b92fbfa5ee3503e2a8a9
                      @ [Lib.Cell]
                      Lib.$s$fShowMap_$cshowsPrec1)
                   Lib.$s$fShowMap_$cshowsPrec_$s$fShowMaybe_$cshowList -}
-aae409f688d7b82babf0c40061c65788
+523977fe65b2f0008321c8f3d9ff2cb1
   $s$fShowMap_$cshowsPrec_$s$fShowMaybe_$cshowList ::
     [GHC.Base.Maybe [Lib.Cell]] -> GHC.Show.ShowS
   {- Arity: 2, Strictness: <S,1*U><L,U>,
@@ -413,7 +420,7 @@ aae409f688d7b82babf0c40061c65788
                       GHC.Show.shows22)
                    eta
                    eta1) -}
-b39adcba06fdd00f96141ada502262eb
+124b747152a0a66700bc11c2ca443844
   $s$fShowMap_$cshowsPrec_$s$fShow[] :: GHC.Show.Show [Lib.Cell]
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
@@ -421,14 +428,14 @@ b39adcba06fdd00f96141ada502262eb
                   Lib.$s$fShowMap_$cshowsPrec_$s$fShow[]_$cshowsPrec
                   Lib.$s$fShowMap_$cshowsPrec_$s$fShow[]_$cshow
                   Lib.$s$fShowMap_$cshowsPrec_$s$fShow[]_$cshowList -}
-9e57d007c7757627f03cfa29acc3c55d
+2ce0cb938c0319bafd0fca106a17380d
   $s$fShowMap_$cshowsPrec_$s$fShow[]_$cshow ::
     [Lib.Cell] -> GHC.Base.String
   {- Arity: 1, Strictness: <S,1*U>,
      Unfolding: InlineRule (1, True, False)
                 (\ (x1 :: [Lib.Cell]) ->
                  Lib.$fShowCell_$cshowList x1 (GHC.Types.[] @ GHC.Types.Char)) -}
-0c11e62e3a7b207853bef135cce598b7
+af89bf3fbe9ae7724b0b86fd11ba574b
   $s$fShowMap_$cshowsPrec_$s$fShow[]_$cshowList ::
     [[Lib.Cell]] -> GHC.Show.ShowS
   {- Arity: 2, Strictness: <S,1*U><L,U>,
@@ -439,7 +446,7 @@ b39adcba06fdd00f96141ada502262eb
                    Lib.$fShowCell_$cshowList
                    eta
                    eta1) -}
-e242168349a1e61acf3af2acde393d90
+62d2a9cf95abdd2ef8b08eebdca49566
   $s$fShowMap_$cshowsPrec_$s$fShow[]_$cshowsPrec ::
     GHC.Types.Int -> [Lib.Cell] -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <L,A>,
@@ -448,7 +455,7 @@ e242168349a1e61acf3af2acde393d90
                    (eta :: [Lib.Cell])
                    (eta1 :: GHC.Base.String) ->
                  Lib.$fShowCell_$cshowList eta eta1) -}
-e32c0a1ef103f921df919658af3f1185
+a2d2a26fd9675cc85a15ffd61d171952
   $sfromList ::
     [(GHC.Base.String, a)] -> Data.Map.Base.Map GHC.Base.String a
   {- Arity: 1, Strictness: <S,1*U>,
@@ -498,104 +505,104 @@ e32c0a1ef103f921df919658af3f1185
                                      (Data.Map.Base.Tip @ GHC.Base.String @ a)
                                      (Data.Map.Base.Tip @ GHC.Base.String @ a))
                                   wild2 } } } } } }) -}
-078665eb54128a4da9610b0e41274732
+1c27c18469af1031215e89a324628d69
   $sfromList1 ::
     Data.Map.Base.Map GHC.Base.String a1
     -> [(GHC.Base.String, a1)] -> Data.Map.Base.Map GHC.Base.String a1
   {- Arity: 2, Strictness: <S,1*U><S,1*U> -}
-ffc1892954bbab6defcb419625faa2e0
+1fa988e762b566c46176f46d5a8f375a
   $sinsert_$sgo10 ::
     GHC.Base.String
     -> a1
     -> Data.Map.Base.Map GHC.Base.String a1
     -> Data.Map.Base.Map GHC.Base.String a1
   {- Arity: 3, Strictness: <S,1*U><L,U><S,1*U> -}
-e15055795caa735e846bb0550b43efa9
+c637d1fa84a03af5839c3b94157ca003
   $smember1 ::
     GHC.Base.String
     -> Data.Map.Base.Map GHC.Base.String a -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U> -}
-e0fdce2c24971a989911311ccff46466
+fcc926dddc930b56dffffd8ac438d3b3
   $tc'Cell :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   8163202596668834071##
-                   5649522107347401093##
+                   14207714437241745227##
+                   15401806165526691094##
                    Lib.$trModule
                    Lib.$tc'Cell1) -}
-01e332d61a55ef3fc895fee6343d5a26
+2fcc73212eae5712693f80473e0c2ab5
   $tc'Cell1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "'Cell"#) -}
-deda392916c38ef7f842c9abe2057a31
+59629c81bdb43c9c0e442d5e6eb536f4
   $tc'Game :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   8488147691251398787##
-                   6460787314886583866##
+                   5869054354299377495##
+                   7321233927434792299##
                    Lib.$trModule
                    Lib.$tc'Game1) -}
-e34d2a368ba45622d84cd5f827a00d08
+a4b969bc1ba40e377113627eac421664
   $tc'Game1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "'Game"#) -}
-1efe460c2f5ca035d09cf746b5b06001
+8f2a0386549a1ec4c25adfc6b31f0a69
   $tc'Indent :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   14981915159195520151##
-                   14612397704369797449##
+                   5142131740241892309##
+                   6031865417566924963##
                    Lib.$trModule
                    Lib.$tc'Indent1) -}
-4f2ec1a216a9f528792190bef2db093f
+c15e4389af8c0b3ebce056d200da836f
   $tc'Indent1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "'Indent"#) -}
-43c1d6775802daf1431bb3f96281dcd6
+c5958f4ebbdfd51ee9b5baa4b2cbd924
   $tcCell :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   12049302456649562124##
-                   4858577557709471604##
+                   9885011101370466894##
+                   15093775846094004099##
                    Lib.$trModule
                    Lib.$tcCell1) -}
-77a62b0f5a10f91d3143b222a9db4972
+6b359bf410cb93d80e0d7491168c19cf
   $tcCell1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "Cell"#) -}
-a71da1ce7f345cadfd070a4ec51b88af
+d2c81a2faa8d42618dcabe5fab3d345b
   $tcGame :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   7985521512939939643##
-                   6730718840303368741##
+                   15744468633948233114##
+                   704894363175240569##
                    Lib.$trModule
                    Lib.$tcGame1) -}
-586fe7f3930b685d247a8971a326256e
+c38b7592137c64fd1488f9ddddc59bae
   $tcGame1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "Game"#) -}
-3e360d14ba3044bacdbe7daf15272fef
+6de8425ed4783304ed2c7b643eeac2fe
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.Module Lib.$trModule2 Lib.$trModule1) -}
-506d1bd9ab9a3f75ef8adb7a62567d57
+f5ccc0a83a62c1cd18ffcca711a461c4
   $trModule1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "Lib"#) -}
-7c47b7ecc6880cca959f71c1637de0bc
+051fbe1ffca588dd4de7aeb3550a1562
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
-                   "words-0.1.0.0-2BohWveyA5lK0ewgybZufq"#) -}
-4519b904a0b2b9229b4c93dd0e55d856
+                   "words-0.1.0.0-LISqhhIiZ4617lGqKY5VXc"#) -}
+95575fc25365ce64af0a01b2a5b34184
   $w$cshowsPrec ::
     GHC.Prim.Int#
     -> Lib.Grid Lib.Cell
     -> Data.Map.Base.Map GHC.Base.String (GHC.Base.Maybe [Lib.Cell])
     -> GHC.Show.ShowS
   {- Arity: 3, Strictness: <S,U><L,U><L,1*U>, Inline: [0] -}
-506c907e0fabcbb757d8c7e29163c51f
+e49f0d35353831e467ab69aeec2ee06c
   $wcompleted ::
     Data.Map.Base.Map GHC.Base.String (GHC.Base.Maybe [Lib.Cell])
     -> GHC.Types.Bool
@@ -616,7 +623,7 @@ a71da1ce7f345cadfd070a4ec51b88af
                         ww
                         Lib.$fShowCell2 of wild1 { GHC.Types.I# y ->
                  GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.==# ww2 y) } }) -}
-9b741a53e1308ba203b0fa421063677c
+75ea8c5a9a956643bf9c6d902c8aa456
   $wformatGame ::
     Lib.Grid Lib.Cell
     -> Data.Map.Base.Map GHC.Base.String (GHC.Base.Maybe [Lib.Cell])
@@ -659,50 +666,99 @@ a71da1ce7f345cadfd070a4ec51b88af
                                     ww7
                                     (GHC.Types.[] @ GHC.Types.Char) of ww8 { (#,#) ww9 ww10 ->
                              GHC.Types.: @ GHC.Types.Char ww9 ww10 } })) } }))) -}
-1554530b0d8c1458cf73014a75386850
+01f4c122258dcf032594b8cb2047842e
   $wpoly_go10 ::
     GHC.Prim.Int#
     -> Data.Map.Base.Map GHC.Base.String a
     -> [(GHC.Base.String, a)]
     -> Data.Map.Base.Map GHC.Base.String a
   {- Arity: 3, Strictness: <L,U><S,1*U><S,1*U>, Inline: [0] -}
-54286c75518fad41f009f50a0ca202b3
+baa386c6efd40b5f3cc6bb5e664afd33
   data Cell
     = Cell (GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)
            GHC.Types.Char
     | Indent
-76e1c48c953eb4187ca8ddb7b6571306
+fb14b325adc3ac9807f881dbfc004da8
   data Game
     = Game {gameGrid :: Lib.Grid Lib.Cell,
             gameWords :: Data.Map.Base.Map
                            GHC.Base.String (GHC.Base.Maybe [Lib.Cell])}
-76c3c693f523da28017d111df4994776
+998714286f71a015d86f7edf8ab38df9
   type Grid a = [[a]]
-2da723161d848a75c70bd5c869a7130f
+b56435b75b7945083b5bddd58f3bef5e
   cell2char :: Lib.Cell -> GHC.Types.Char
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: Lib.Cell) ->
                  case ds of wild {
                    Lib.Cell ds1 c -> c Lib.Indent -> Lib.cell2char1 }) -}
-956a752bb0adbd001c4fbdbc6bce09a1
+07250d13878d3feffb46e8a5d1de9311
   cell2char1 :: GHC.Types.Char
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.C# '?'#) -}
-cb1573412bb45b958f7b8f3e572720ff
+2e1f1155e4e87a93f88f5c537c7efb31
   completed :: Lib.Game -> GHC.Types.Bool
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,U)>,
      Inline: INLINE[0],
      Unfolding: InlineRule (1, True, False)
                 (\ (w :: Lib.Game) ->
                  case w of ww { Lib.Game ww1 ww2 -> Lib.$wcompleted ww2 }) -}
-3609a362f7ca87609efaed4c59aef9b6
+1a7ec1d511599c26a224424144c10668
   completed_go10 ::
     (GHC.Types.Int -> GHC.Types.Int)
     -> Data.Map.Base.Map [GHC.Types.Char] (GHC.Base.Maybe [Lib.Cell])
     -> GHC.Types.Int
     -> GHC.Types.Int
   {- Arity: 2, HasNoCafRefs, Strictness: <L,1*U><S,1*U> -}
-500e2b5c3ac9e4d01a575eefe3b63b2e
+cdbe819f9e7a4c4bb4b46f5a3a1bb53c
+  fillInBlanks ::
+    System.Random.RandomGen t =>
+    t -> Lib.Grid GHC.Types.Char -> Lib.Grid GHC.Types.Char
+  {- Arity: 3,
+     Strictness: <L,U(C(U(1*U(U),U)),C(U(U,U)),C(U(U,U)))><L,U><S,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ t
+                   ($dRandomGen :: System.Random.RandomGen t)
+                   (gen :: t)
+                   (grid :: Lib.Grid GHC.Types.Char) ->
+                 GHC.Base.build
+                   @ [GHC.Types.Char]
+                   (\ @ b1
+                      (c1 :: [GHC.Types.Char] -> b1 -> b1)[OneShot]
+                      (n :: b1)[OneShot] ->
+                    GHC.List.foldr2
+                      @ [GHC.Types.Char]
+                      @ [GHC.Types.Char]
+                      @ b1
+                      (GHC.List.zipWithFB
+                         @ [GHC.Types.Char]
+                         @ b1
+                         @ b1
+                         @ [GHC.Types.Char]
+                         @ [GHC.Types.Char]
+                         c1
+                         (GHC.List.zipWith
+                            @ GHC.Types.Char
+                            @ GHC.Types.Char
+                            @ GHC.Types.Char
+                            Lib.fillInBlanks1))
+                      n
+                      grid
+                      (Lib.makeRandomGrid @ t $dRandomGen gen))) -}
+d93f568817e353fe3654e021900985fe
+  fillInBlanks1 :: GHC.Types.Char -> GHC.Types.Char -> GHC.Types.Char
+  {- Arity: 2, Strictness: <S(S),1*U(U)><S,1*U(U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: GHC.Types.Char) (r :: GHC.Types.Char) ->
+                 case ds of wild { GHC.Types.C# ds1 ->
+                 case ds1 of ds2 {
+                   DEFAULT
+                   -> case r of wild1 { GHC.Types.C# ds3 ->
+                      case ds3 of ds4 { DEFAULT -> Lib.fillInBlanks2 '_'# -> wild } }
+                   '_'# -> r } }) -}
+58cde79c6db2c192ef69700658def9ac
+  fillInBlanks2 :: GHC.Types.Char
+  {- Strictness: x -}
+6aaf93ca103fab14794c9baeba81b116
   findWord ::
     Lib.Grid Lib.Cell -> GHC.Base.String -> GHC.Base.Maybe [Lib.Cell]
   {- Arity: 2, HasNoCafRefs, Strictness: <S,U><L,U>,
@@ -752,16 +808,16 @@ cb1573412bb45b958f7b8f3e572720ff
                  case Data.Maybe.catMaybes1 @ [Lib.Cell] (go lines) of wild {
                    [] -> GHC.Base.Nothing @ [Lib.Cell]
                    : a1 ds1 -> GHC.Base.Just @ [Lib.Cell] a1 }) -}
-2657599103d1de8ed047f33aa07ce4c8
+8bd6004b1eb1971e1b9abca5d643288d
   findWordInCellLinePrefix ::
     [Lib.Cell]
     -> GHC.Base.String -> [Lib.Cell] -> GHC.Base.Maybe [Lib.Cell]
   {- Arity: 3, HasNoCafRefs, Strictness: <L,U><S,1*U><L,1*U> -}
-891706b9da08e1b86d047f63148c3bd6
+3fe3289547f1d5402cfbece30d8e991c
   findWordInLine ::
     GHC.Base.String -> [Lib.Cell] -> GHC.Base.Maybe [Lib.Cell]
   {- Arity: 2, HasNoCafRefs, Strictness: <L,U><S,1*U> -}
-a7cd75834e94cb281a8ca07657d39318
+b3daa7299c461778f51a50b38d5b7533
   findWords ::
     Lib.Grid Lib.Cell -> [GHC.Base.String] -> GHC.Base.Maybe [Lib.Cell]
   {- Arity: 2, HasNoCafRefs, Strictness: <L,U><S,1*U>,
@@ -776,21 +832,21 @@ a7cd75834e94cb281a8ca07657d39318
                            words) of wild {
                    [] -> GHC.Base.Nothing @ [Lib.Cell]
                    : a1 ds1 -> GHC.Base.Just @ [Lib.Cell] a1 }) -}
-ac630098badcfd52eda8cd06da5a6f17
+3821c1c35c221c4f4f29faa06b6b673f
   formatGame :: Lib.Game -> GHC.Base.String
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U,U)>,
      Inline: INLINE[0],
      Unfolding: InlineRule (1, True, False)
                 (\ (w :: Lib.Game) ->
                  case w of ww { Lib.Game ww1 ww2 -> Lib.$wformatGame ww1 ww2 }) -}
-3446810e1d2ab5dc4b6cb9036f73767c
+2b1e602b66b8fcd971458a29a22d06b7
   formatGame1 :: [Lib.Cell] -> [GHC.Types.Char]
   {- Arity: 1, HasNoCafRefs,
      Unfolding: (GHC.Base.map
                    @ Lib.Cell
                    @ GHC.Types.Char
                    Lib.cell2char) -}
-e5cdef07fd6c5fcc8b3dfb6e02792679
+14401ad97c2c9b5a6246481cfcb3f985
   formatGrid :: Lib.Grid Lib.Cell -> GHC.Base.String
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
      Unfolding: InlineRule (1, True, False)
@@ -812,14 +868,14 @@ e5cdef07fd6c5fcc8b3dfb6e02792679
                             Lib.formatGame1)
                          n
                          x1))) -}
-9ec4117dd9b6415b9c177ede55e92a60
+d7ea327216f01ef9b15f59c7219ad601
   gameGrid :: Lib.Game -> Lib.Grid Lib.Cell
   RecSel Left Lib.Game
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U,A)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: Lib.Game) ->
                  case ds of wild { Lib.Game ds1 ds2 -> ds1 }) -}
-12b8d88aa7a02153b51392a2b38c57ef
+3af8403a7af907440ae7fddfd6f4e00b
   gameWords ::
     Lib.Game
     -> Data.Map.Base.Map GHC.Base.String (GHC.Base.Maybe [Lib.Cell])
@@ -828,7 +884,7 @@ e5cdef07fd6c5fcc8b3dfb6e02792679
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: Lib.Game) ->
                  case ds of wild { Lib.Game ds1 ds2 -> ds2 }) -}
-e9b1d1aeafb6535af548b93e50fda601
+296ad0b6a437a6687f888ff1394a54cd
   gridWithCoords :: Lib.Grid GHC.Types.Char -> Lib.Grid Lib.Cell
   {- Arity: 1, Strictness: <L,1*U>,
      Unfolding: InlineRule (1, True, False)
@@ -857,24 +913,24 @@ e9b1d1aeafb6535af548b93e50fda601
                       n
                       Lib.gridWithCoords1
                       eta)) -}
-54b691101da2959f9bcffd43f878e5d2
+8acf8fc9a818c6d4a7939a96d64def71
   gridWithCoords1 ::
     [[(GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)]]
   {- Unfolding: (Lib.gridWithCoords_go
                    Lib.gridWithCoords2
                    Lib.gridWithCoords_xs) -}
-dd0f05dbd6385cf1106b21dd98e61064
+4ff0b47606ea22f6590b1a1723509de3
   gridWithCoords2 :: GHC.Integer.Type.Integer
   {- HasNoCafRefs, Unfolding: (0) -}
-a3585345002dfc73ae5636ac60510626
+e868d733229b4ab867b96f643f4a7ce7
   gridWithCoords_go ::
     GHC.Integer.Type.Integer
     -> [[GHC.Integer.Type.Integer]]
     -> [[(GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)]]
   {- Arity: 2, Strictness: <S,1*U><S,1*U> -}
-529da69a1e34d1622ca6e537f456168a
+5d34efd57e9afc782ad67466bd2b233b
   gridWithCoords_xs :: [[GHC.Integer.Type.Integer]]
-8f186f50ee16bf3e6c52014e0caf28f2
+97cfb2e6795db37e7a3af92a4af10889
   makeGame ::
     Lib.Grid GHC.Types.Char -> [GHC.Base.String] -> Lib.Game
   {- Arity: 2, Strictness: <L,1*U><L,1*U>m,
@@ -902,21 +958,71 @@ a3585345002dfc73ae5636ac60510626
                                Lib.makeGame1)
                             n
                             words)))) -}
-9cd3613bd36ac570b32aaee8062cee1d
+aa6b71832227b06d20f39a30f304c7bb
   makeGame1 ::
     GHC.Base.String -> (GHC.Base.String, GHC.Base.Maybe [Lib.Cell])
   {- Arity: 1, HasNoCafRefs, Strictness: <L,U>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (word :: GHC.Base.String) ->
                  (word, GHC.Base.Nothing @ [Lib.Cell])) -}
-07c612f8261121dfe56cec50d9b22147
+f99a4faf93bb300488c15be1e99abcf1
+  makeRandomGrid ::
+    System.Random.RandomGen t => t -> [[GHC.Types.Char]]
+  {- Arity: 2,
+     Strictness: <L,U(C(U(1*U(U),U)),C(U(U,U)),C(U(U,U)))><L,U>,
+     Unfolding: (\ @ t
+                   ($dRandomGen :: System.Random.RandomGen t)
+                   (eta :: t) ->
+                 letrec {
+                   go :: t -> [GHC.Types.Char] {- Arity: 1, Strictness: <L,U> -}
+                   = \ (g2 :: t) ->
+                     case System.Random.$wrandomIvalInteger
+                            @ t
+                            @ GHC.Types.Int
+                            $dRandomGen
+                            GHC.Num.$fNumInt
+                            Lib.makeRandomGrid2
+                            Lib.makeRandomGrid1
+                            g2 of ww7 { (#,#) ww8 ww9 ->
+                     case ww8 of wild { GHC.Types.I# i# ->
+                     case GHC.Prim.tagToEnum#
+                            @ GHC.Types.Bool
+                            (GHC.Prim.leWord# (GHC.Prim.int2Word# i#) 1114111##) of wild1 {
+                       GHC.Types.False
+                       -> case GHC.Char.chr2 i# ret_ty [GHC.Types.Char] of {}
+                       GHC.Types.True
+                       -> GHC.Types.:
+                            @ GHC.Types.Char
+                            (GHC.Types.C# (GHC.Prim.chr# i#))
+                            (go ww9) } } }
+                 } in
+                 letrec {
+                   makeRandomGrid3 :: t -> [[GHC.Types.Char]]
+                     {- Arity: 1, Strictness: <L,U> -}
+                   = \ (gen :: t) ->
+                     let {
+                       ds :: (t, t) = System.Random.split @ t $dRandomGen gen
+                     } in
+                     GHC.Types.:
+                       @ [GHC.Types.Char]
+                       (go (case ds of wild { (,) gen1 gen2 -> gen1 }))
+                       (makeRandomGrid3 (case ds of wild { (,) gen1 gen2 -> gen2 }))
+                 } in
+                 makeRandomGrid3 eta) -}
+2a0e3d5f8fd226f7aa832c18a3d60b9c
+  makeRandomGrid1 :: GHC.Integer.Type.Integer
+  {- HasNoCafRefs, Unfolding: (90) -}
+afb3b509889ee7b8f1584d0f581f93e9
+  makeRandomGrid2 :: GHC.Integer.Type.Integer
+  {- HasNoCafRefs, Unfolding: (65) -}
+38f32919136a14ddee7bf8818340739f
   outputGrid :: Lib.Grid Lib.Cell -> GHC.Types.IO ()
   {- Arity: 2, Strictness: <L,1*U><S,U>,
      Unfolding: InlineRule (0, True, True)
                 Lib.outputGrid1
                   `cast`
                 (<Lib.Grid Lib.Cell>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
-8b1d6c23c8bd900be80457c145f945e1
+9f917f083a3d8dd4872914383fe837d3
   outputGrid1 ::
     Lib.Grid Lib.Cell
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -930,7 +1036,7 @@ a3585345002dfc73ae5636ac60510626
                    (Lib.formatGrid grid)
                    GHC.Types.True
                    eta) -}
-126a9ab87c8fc7e795bd14e6399e23d0
+0b177a91e6435ea7607e39531b662a55
   playGame :: Lib.Game -> GHC.Base.String -> Lib.Game
   {- Arity: 2, Strictness: <S(LS),1*U(U,U)><S,U>m, Inline: INLINE[0],
      Unfolding: InlineRule (2, True, False)
@@ -949,7 +1055,7 @@ a3585345002dfc73ae5636ac60510626
                                 w1
                                 wild1
                                 ww2) } } }) -}
-9efd1093058d9a2b8d736f038e398f52
+be5821fe66f20219b5a273474bd7643a
   score :: Lib.Game -> GHC.Types.Int
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U)>m,
      Inline: INLINE[0],
@@ -966,16 +1072,16 @@ a3585345002dfc73ae5636ac60510626
                               ww2))
                         0# of ww3 { DEFAULT ->
                  GHC.Types.I# ww3 } }) -}
-18fae13dc0f9715558f830f3b8b4d714
+624d613e608f8f0620fcf28e21aac5c4
   skew :: Lib.Grid Lib.Cell -> Lib.Grid Lib.Cell
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
-2ed870a449563f1988efcd865a1441d4
+f7d8941b52df9453a5f443f4786248ed
   totalWords :: Lib.Game -> GHC.Types.Int
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (game :: Lib.Game) ->
                  case game of wild { Lib.Game ds ds1 -> Lib.totalWords1 ds1 }) -}
-7986c04c66518ba3b7e48e6640e1f095
+a8261089cf31ff03cc29255a44d06ca4
   totalWords1 ::
     Data.Map.Base.Map GHC.Base.String (GHC.Base.Maybe [Lib.Cell])
     -> GHC.Types.Int
@@ -986,12 +1092,12 @@ a3585345002dfc73ae5636ac60510626
                    (GHC.Base.id @ GHC.Types.Int)
                    x1
                    Lib.$fShowCell2) -}
-bc5d12919976b9ef5d97546a18ce478c
+db0fe5e8a91518e3772a44c73c9417af
   zipOverGrid :: Lib.Grid a -> Lib.Grid b -> Lib.Grid (a, b)
   {- Arity: 2, HasNoCafRefs,
      Unfolding: (\ @ a @ b ->
                  GHC.List.zipWith @ [a] @ [b] @ [(a, b)] (GHC.List.zip @ a @ b)) -}
-524ce482ce7461b9add65b3c757aafd6
+0220c2ac795f0dc014fb22a97ec650ec
   zipOverGridWith ::
     (a -> b -> c) -> Lib.Grid a -> Lib.Grid b -> Lib.Grid c
   {- Arity: 3, HasNoCafRefs, Strictness: <L,C(C1(U))><S,1*U><L,1*U>,

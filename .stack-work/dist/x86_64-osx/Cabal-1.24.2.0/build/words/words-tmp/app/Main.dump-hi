@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2017-12-10 13:20:01.457463 UTC
+2017-12-10 13:55:19.209306 UTC
 
 interface main@main:Main 8002
-  interface hash: 615aec6a154a4f0d01caf4d4497fd4d6
-  ABI hash: d3cfe41113547c5c5fc3bf052072730b
-  export-list hash: 8f7da2f7457e419e8d4b08fec7c71dd6
+  interface hash: 1b90e557be94cba46422c30519b4bfa6
+  ABI hash: ed145b6c6dcf537d09fa892ed64abd75
+  export-list hash: b68b535fe2ac0d1c1abe89c3cad23be6
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 18890c475136d256121154199ab54742
   sig of: Nothing
@@ -18,9 +18,13 @@ module dependencies:
 package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.1.0*
                       containers-0.5.7.1@containers-0.5.7.1
                       deepseq-1.4.2.0@deepseq-1.4.2.0 ghc-prim-0.5.0.0
-                      integer-gmp-1.0.0.1
-                      words-0.1.0.0@words-0.1.0.0-2BohWveyA5lK0ewgybZufq
+                      integer-gmp-1.0.0.1 random-1.1@random-1.1-9tceXaeYIMZ4JrKq20Egog*
+                      time-1.6.0.1@time-1.6.0.1
+                      words-0.1.0.0@words-0.1.0.0-LISqhhIiZ4617lGqKY5VXc
 orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+         time-1.6.0.1@time-1.6.0.1:Data.Time.Calendar.Gregorian
+         time-1.6.0.1@time-1.6.0.1:Data.Time.Format.Parse
+         time-1.6.0.1@time-1.6.0.1:Data.Time.LocalTime.LocalTime
 family instance modules: base-4.9.1.0:Control.Applicative
                          base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
                          base-4.9.1.0:Data.Functor.Const base-4.9.1.0:Data.Functor.Identity
@@ -38,8 +42,9 @@ import  -/  base-4.9.1.0:GHC.IO.Handle.Types 17aa0e2ab137800e3a31992d780c071f
 import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
 import  -/  base-4.9.1.0:System.IO c9de64c5f5407c4cf1c52500c4d15200
 import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
-import  -/  words-0.1.0.0@words-0.1.0.0-2BohWveyA5lK0ewgybZufq:Data 08fa91b9f0a569755aff55ad6b28e59f
-import  -/  words-0.1.0.0@words-0.1.0.0-2BohWveyA5lK0ewgybZufq:Lib 10fc7f4b0f2dae6243e08fe3a4dc63ed
+import  -/  random-1.1@random-1.1-9tceXaeYIMZ4JrKq20Egog:System.Random cc3ef358c669b194cf9fe94db6f2430f
+import  -/  words-0.1.0.0@words-0.1.0.0-LISqhhIiZ4617lGqKY5VXc:Data 5f2bf0f02358b5819885eaa899f1b66c
+import  -/  words-0.1.0.0@words-0.1.0.0-LISqhhIiZ4617lGqKY5VXc:Lib 4e8f53d6c1ce07f940f7016c9737b38d
 d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
@@ -52,39 +57,51 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
-e8444090ab17caea8e0eb92a32ec73a5
+0756f07acc325501249f7e73d986684b
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-16b05d2f4cc78b9ba98ff63c6170272c
+cb84a00570f40c7afa233be4c1821a2f
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case System.Random.theStdGen
+                        `cast`
+                      (GHC.IORef.N:IORef[0] <System.Random.StdGen>_N) of wild { GHC.STRef.STRef r# ->
+                 case GHC.Prim.atomicModifyMutVar#
+                        @ GHC.Prim.RealWorld
+                        @ System.Random.StdGen
+                        @ (System.Random.StdGen, System.Random.StdGen)
+                        @ System.Random.StdGen
+                        r#
+                        System.Random.newStdGen2
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 case ipv1 of b1 { System.Random.StdGen ipv2 ipv3 ->
                  case GHC.IO.Handle.hSetBuffering1
                         GHC.IO.Handle.FD.stdout
                         GHC.IO.Handle.Types.NoBuffering
-                        s of ds1 { (#,#) ipv ipv1 ->
-                 Main.main7 Main.main2 ipv }) -}
-25c1fbead2dc0d3d81f5495aba80e7e4
+                        ipv of ds2 { (#,#) ipv4 ipv5 ->
+                 Main.main7 Main.main2 ipv4 } } } }) -}
+d92d9da79a38ffa47f2a92656b3dd32c
   main2 :: Lib.Game
   {- Unfolding: (Lib.Game Main.main5 Main.main3) -}
-f2633e97e03f98857edb9f0f1e685a13
+f23e6ef6685fa4b6c20071bddbc55dda
   main3 ::
     Data.Map.Base.Map GHC.Base.String (GHC.Base.Maybe [Lib.Cell])
   {- Unfolding: (Lib.$sfromList
                    @ (GHC.Base.Maybe [Lib.Cell])
                    Main.main4) -}
-89e7771f9a95e735a5398b12ac6a5b42
+7dfa1833c7d2f82803bc33f4ca4ebaf5
   main4 :: [(GHC.Base.String, GHC.Base.Maybe [Lib.Cell])]
   {- Unfolding: (GHC.Base.map
                    @ [GHC.Types.Char]
                    @ (GHC.Base.String, GHC.Base.Maybe [Lib.Cell])
                    Lib.makeGame1
                    Data.languages) -}
-f5e669d101f28634e6997a5a376fb26b
+f63893f50f4a2181c3f722b7c665ec0a
   main5 :: [[Lib.Cell]]
   {- Unfolding: (GHC.List.zipWith
                    @ [(GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)]
@@ -93,7 +110,7 @@ f5e669d101f28634e6997a5a376fb26b
                    Main.main6
                    Lib.gridWithCoords1
                    Data.grid) -}
-1b72144adf4614dd1e4f26be9fdd01b9
+be7df2a141bd0a15581903ba26546c90
   main6 ::
     [(GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)]
     -> [GHC.Types.Char] -> [Lib.Cell]
@@ -103,13 +120,13 @@ f5e669d101f28634e6997a5a376fb26b
                    @ GHC.Types.Char
                    @ Lib.Cell
                    Lib.Cell) -}
-b7657f1efeb11a81dec6be85ef3d5b98
+e7dbaa44c6b93e7efeecd506da10b4e1
   main7 ::
     Lib.Game
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 2, Strictness: <L,U(U,U)><S,U> -}
-02b31339b889a4b75b89b16daaf11366
+d6f80273570bf868ea05447cebf62034
   main8 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -117,7 +134,7 @@ b7657f1efeb11a81dec6be85ef3d5b98
      Unfolding: (GHC.TopHandler.runMainIO1
                    @ ()
                    Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R))) -}
-a45f1211cf1409b99d5c69bd15bc295d
+c36c5640f0db811e04dc480bb37ec1bf
   playTurn :: Lib.Game -> GHC.Types.IO ()
   {- Arity: 2, Strictness: <L,U(U,U)><S,U>,
      Unfolding: InlineRule (0, True, True)

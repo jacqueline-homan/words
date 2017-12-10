@@ -21,6 +21,13 @@
   (major1) == 0 && (major2) <  5 || \
   (major1) == 0 && (major2) == 5 && (minor) <= 7)
 
+/* package random-1.1 */
+#define VERSION_random "1.1"
+#define MIN_VERSION_random(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  1 || \
+  (major1) == 1 && (major2) == 1 && (minor) <= 0)
+
 /* package hspec-2.4.4 */
 #define VERSION_hspec "2.4.4"
 #define MIN_VERSION_hspec(major1,major2,minor) (\
@@ -98,7 +105,7 @@
   (major1) == 0 && (major2) <  29 || \
   (major1) == 0 && (major2) == 29 && (minor) <= 2)
 
-#define CURRENT_COMPONENT_ID "words-0.1.0.0-2BohWveyA5lK0ewgybZufq"
+#define CURRENT_COMPONENT_ID "words-0.1.0.0-LISqhhIiZ4617lGqKY5VXc"
 
-#define CURRENT_PACKAGE_KEY "words-0.1.0.0-2BohWveyA5lK0ewgybZufq"
+#define CURRENT_PACKAGE_KEY "words-0.1.0.0-LISqhhIiZ4617lGqKY5VXc"
 
