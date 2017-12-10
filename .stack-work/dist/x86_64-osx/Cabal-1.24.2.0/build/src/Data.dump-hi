@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2017-12-03 17:10:47.168411 UTC
+2017-12-10 12:53:46.03705 UTC
 
-interface words-0.1.0.0-CYI3KknegDpJL5eLhQz4hl:Data 8002
-  interface hash: 806871f0c8f903a0180fc3ef5f9ab60c
-  ABI hash: 39bc4c572ce575449c4dbbad891f3e1d
-  export-list hash: 73c897f1a14ad8b095cdd6591b02923c
+interface words-0.1.0.0-2BohWveyA5lK0ewgybZufq:Data 8002
+  interface hash: f261facdffde6e629639eb25bb0871ac
+  ABI hash: 08fa91b9f0a569755aff55ad6b28e59f
+  export-list hash: c8fed86a4078aa11c75f453342b2292d
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: f6624f22fcdd76ed0ac6625466e2d712
   sig of: Nothing
@@ -23,240 +23,241 @@ family instance modules: base-4.9.1.0:Control.Applicative
                          base-4.9.1.0:Data.Monoid base-4.9.1.0:Data.Type.Equality
                          base-4.9.1.0:GHC.Generics base-4.9.1.0:GHC.IO.Exception
                          base-4.9.1.0:GHC.TypeLits
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
 import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
-215f663056e09b2c3a25b959b6eea657
+b81e4abdf2570cd3ad4f1546b9955d4c
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.Module Data.$trModule2 Data.$trModule1) -}
-c23c70e482f97a53a0d3a3662538cbdf
+b3e1c57b0cec88cd1f8c01c5c574e404
   $trModule1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "Data"#) -}
-1ec514b3980b30cbdc5416a0da1db9bb
+8f57e8cd9a22f27ce34e914330b37e89
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
-                   "words-0.1.0.0-CYI3KknegDpJL5eLhQz4hl"#) -}
-6be956392e2dfbe9ab186f3316a242b0
-  grid :: [[GHC.Types.Char]]
+                   "words-0.1.0.0-2BohWveyA5lK0ewgybZufq"#) -}
+9db86466b1d45406371f9350c21bf0bb
+  grid :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.grid23
                    Data.grid1) -}
-129eb6d648de1608320fbaefd3dfea38
-  grid1 :: [[GHC.Types.Char]]
+7a6f774650525f2e3b5e2460eb627271
+  grid1 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.grid22
                    Data.grid2) -}
-18365f50b36d47379b541c631896d9b9
-  grid10 :: [[GHC.Types.Char]]
+cc190f5eedc297e217a2ee6d1249c14f
+  grid10 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.grid13
                    Data.grid11) -}
-0b38fa779f38c0d50fe4ab1608255cec
-  grid11 :: [[GHC.Types.Char]]
+6d782b90f6e8bf1e321dec70be45363a
+  grid11 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.grid12
-                   (GHC.Types.[] @ [GHC.Types.Char])) -}
-f48f507df209059ffd1b856f7e09c666
+                   (GHC.Types.[] @ GHC.Base.String)) -}
+b7c1cad70f4e6cf6fa8ecff596fe5ae7
   grid12 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "________CN_____"#) -}
-9e43431f2b1b5f858c3a88ded18f5e8e
+e009a5acc8238b0b0a9dd25414ba96a9
   grid13 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "_________O_____"#) -}
-38cf9251dcb646768448c59fbc87b942
+794100a37342550ca2807f037cfac88f
   grid14 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "_________HB____"#) -}
-be8357f3c3ffefa88072029b6ee08aa5
+2e8fef8f1e10e076d5df90f79a81b66d
   grid15 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "____L_E__T_O___"#) -}
-885d79ccfdd5e0564a7a5f439a8471bd
+9b7e91f200b6bf434526da5140a63059
   grid16 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "____I__M_Y__L__"#) -}
-f05f3728d89d1adbe93cc56a6de65fac
+b6f47598565332f48f86499c3eb4b8a8
   grid17 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "____S_LREP_____"#) -}
-13e2d9067dd9d98ce2bb063259d7c295
+5290c7d7edb7cf2a64cb21b27d203599
   grid18 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "__PHP____H_____"#) -}
-7e342e2b0e8a8dcb084c1854185abfde
+efe1f9cacd30d98256263e4205114eb5
   grid19 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "__R___B___C____"#) -}
-3e1d93a82baddfadee583f60a07301aa
-  grid2 :: [[GHC.Types.Char]]
+3c653603715982ae446598d129600b79
+  grid2 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.grid21
                    Data.grid3) -}
-31aaa4c791b622a83d99d999427380a5
+98ce5c1af9729e296edf97badc912a30
   grid20 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "__A__A_____S__Y"#) -}
-46251503c64ecb0728d49823b4b327f5
+40f9361734695d43948fc930f7371e28
   grid21 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "__HASKELL____B_"#) -}
-04224a26b2e5a1f9ebe1076f45684984
+af44b6599bea81687b7962d306b59aad
   grid22 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "__SI________U__"#) -}
-3604318ef4085f85393e31d7a63b134b
+876e0683c688d540acd4d535365328ad
   grid23 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "__C________R___"#) -}
-9bb7ed7977eac78054367c4155d22391
-  grid3 :: [[GHC.Types.Char]]
+de8ebb9a28949bf49a74852bb7fa2bfe
+  grid3 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.grid20
                    Data.grid4) -}
-98b37abac86530d8b65e8afde5ebc3ce
-  grid4 :: [[GHC.Types.Char]]
+55b850114382b64177a6c497c628810c
+  grid4 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.grid19
                    Data.grid5) -}
-f2e0f6b0dbd55b49488a93d6844cd1e7
-  grid5 :: [[GHC.Types.Char]]
+482c7221a9bda61756e49ea3a4c28c5c
+  grid5 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.grid18
                    Data.grid6) -}
-e85163b5213e81a1b12055620806eae1
-  grid6 :: [[GHC.Types.Char]]
+b4c866c22c822f695f3bbe574127caa8
+  grid6 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.grid17
                    Data.grid7) -}
-463aa620727cadcd3f54f8e4623b6353
-  grid7 :: [[GHC.Types.Char]]
+3890cae7fc0d730bb4de6da05a3866f0
+  grid7 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.grid16
                    Data.grid8) -}
-01fd41498ce56a00791f33a517c577bc
-  grid8 :: [[GHC.Types.Char]]
+15015bb181c257945f0fe6dff97fd412
+  grid8 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.grid15
                    Data.grid9) -}
-3c85658cb2d7e74a39456826bd42614a
-  grid9 :: [[GHC.Types.Char]]
+eacf3cdec26846fde450e1f4d47321b7
+  grid9 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.grid14
                    Data.grid10) -}
-7386248e83afb7a70e94169e11f1ea54
-  languages :: [[GHC.Types.Char]]
+adcd610de8705f309ed1cf6ec2c182fb
+  languages :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.languages19
                    Data.languages1) -}
-3ccbd79ff0f5053b081c8a903d7407ec
-  languages1 :: [[GHC.Types.Char]]
+15f1e5e683ebdeabafcd0d13573e72df
+  languages1 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.languages18
                    Data.languages2) -}
-34ca60a742bdb04dea99bfc5955e4c24
+77cf4723afa38db213bf5ee684db56ec
   languages10 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "SCHEME"#) -}
-29831227cc6af8a673aa1fecd45ab0ad
+c25246d9187966ed1a70e507e07165da
   languages11 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "RUBY"#) -}
-3a4c58643a878a19dd2f91f031735568
+99346263d26a495b6706137fb5065fde
   languages12 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "PYTHON"#) -}
-e6e41280c0363077d2104b66f4373021
+e173be997fe8ec4fd2891db0c15fd7ab
   languages13 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "PHP"#) -}
-2834951c5db2ca641499d314cc683979
+af77287c2cdd250361e173159fbfd2bf
   languages14 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "PERL"#) -}
-71b3fdb2829a39a0560c3e091ac52728
+ee13e28ff7a072ff1589218e4e7fe4ab
   languages15 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "LISP"#) -}
-39a5bff3af8a6229058db70813cf9bd4
+3064e6a41c7396f96b943575db23ea64
   languages16 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "HASKELL"#) -}
-e0e7db59d39fa98b7b04fd6e524985f4
+0fc30210f55082766b8c1989bdc34d8e
   languages17 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "CSHARP"#) -}
-ce9b4651c39984c6b04215904cb8151b
+dcfb4c051dfdf1b79b05d9c18668937a
   languages18 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "COBOL"#) -}
-9e440cf61e5cd6a607883d7e851b9c3b
+70cb5b6f81f52609a683d101c6598d6d
   languages19 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "BASIC"#) -}
-3df9a2827662f5bf3b5bc9f8b47a8067
-  languages2 :: [[GHC.Types.Char]]
+ff0a12b2407d97a4125895fe3629cba0
+  languages2 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.languages17
                    Data.languages3) -}
-a54debf7c1862c960e440e10695c93d1
-  languages3 :: [[GHC.Types.Char]]
+4acacfb3c3324f483ffe0f997d317663
+  languages3 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.languages16
                    Data.languages4) -}
-2028dba55836444982c0eaa5c7872602
-  languages4 :: [[GHC.Types.Char]]
+98b27cc065cdf840f8e7cd1039c217d6
+  languages4 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.languages15
                    Data.languages5) -}
-8e9cb1537db80c04c6286e6418b007a3
-  languages5 :: [[GHC.Types.Char]]
+d55ec547d6107a0f381fa7ebab20e7c6
+  languages5 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.languages14
                    Data.languages6) -}
-4e22bcfd4b534f0cfa743828c7d67001
-  languages6 :: [[GHC.Types.Char]]
+1da1d6e4e1e6b985024fbf35cfd97ec3
+  languages6 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.languages13
                    Data.languages7) -}
-d41ed250b7bac33128988a72e6ad0818
-  languages7 :: [[GHC.Types.Char]]
+5ac403b7e9e25ada19704bd2597dc763
+  languages7 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.languages12
                    Data.languages8) -}
-6bc5694bdb4036fed94a4963ad2791e1
-  languages8 :: [[GHC.Types.Char]]
+bf6d914072f6ec2fb1642cfad19bd116
+  languages8 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.languages11
                    Data.languages9) -}
-1e244a30745be594b37ab4783900660b
-  languages9 :: [[GHC.Types.Char]]
+e480f492e6c4d6fc2deaf29eca1bb4e8
+  languages9 :: [GHC.Base.String]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
-                   @ [GHC.Types.Char]
+                   @ GHC.Base.String
                    Data.languages10
-                   (GHC.Types.[] @ [GHC.Types.Char])) -}
+                   (GHC.Types.[] @ GHC.Base.String)) -}
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

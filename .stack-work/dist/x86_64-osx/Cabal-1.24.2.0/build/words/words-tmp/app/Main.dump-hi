@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2017-12-04 06:09:21.217468 UTC
+2017-12-10 12:53:47.310823 UTC
 
 interface main@main:Main 8002
-  interface hash: dab52fd0a8cdb50163f3ce6d8627249a
-  ABI hash: 9280854fb3942ee0b39ea51c7cacb4be
-  export-list hash: f480b6668b51c570c9f476e83ca9ab2d
+  interface hash: a77f87d1789fe2ca93d6bcd5f748799d
+  ABI hash: 8bb8a19431afe9d22e2902f96c4290e6
+  export-list hash: 8f7da2f7457e419e8d4b08fec7c71dd6
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 18890c475136d256121154199ab54742
   sig of: Nothing
@@ -13,20 +13,30 @@ interface main@main:Main 8002
   where
 exports:
   Main.main
+  Main.playTurn
 module dependencies:
-package dependencies: base-4.9.1.0* ghc-prim-0.5.0.0
+package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.1.0*
+                      containers-0.5.7.1@containers-0.5.7.1
+                      deepseq-1.4.2.0@deepseq-1.4.2.0 ghc-prim-0.5.0.0
                       integer-gmp-1.0.0.1
-                      words-0.1.0.0@words-0.1.0.0-CYI3KknegDpJL5eLhQz4hl
+                      words-0.1.0.0@words-0.1.0.0-2BohWveyA5lK0ewgybZufq
 orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
 family instance modules: base-4.9.1.0:Control.Applicative
-                         base-4.9.1.0:Data.Either base-4.9.1.0:Data.Functor.Const
-                         base-4.9.1.0:Data.Monoid base-4.9.1.0:Data.Type.Equality
-                         base-4.9.1.0:GHC.Generics base-4.9.1.0:GHC.IO.Exception
-                         base-4.9.1.0:GHC.TypeLits
+                         base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
+                         base-4.9.1.0:Data.Functor.Const base-4.9.1.0:Data.Functor.Identity
+                         base-4.9.1.0:Data.List.NonEmpty base-4.9.1.0:Data.Monoid
+                         base-4.9.1.0:Data.Semigroup base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:Data.Version base-4.9.1.0:Data.Void
+                         base-4.9.1.0:GHC.Exts base-4.9.1.0:GHC.Generics
+                         base-4.9.1.0:GHC.IO.Exception base-4.9.1.0:GHC.TypeLits
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
 import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  base-4.9.1.0:System.IO c9de64c5f5407c4cf1c52500c4d15200
 import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
-import  -/  words-0.1.0.0@words-0.1.0.0-CYI3KknegDpJL5eLhQz4hl:Data 39bc4c572ce575449c4dbbad891f3e1d
-import  -/  words-0.1.0.0@words-0.1.0.0-CYI3KknegDpJL5eLhQz4hl:Lib d624ed7e6e3a1ced2a9fac6a658b8850
+import  -/  words-0.1.0.0@words-0.1.0.0-2BohWveyA5lK0ewgybZufq:Data 08fa91b9f0a569755aff55ad6b28e59f
+import  -/  words-0.1.0.0@words-0.1.0.0-2BohWveyA5lK0ewgybZufq:Lib 10fc7f4b0f2dae6243e08fe3a4dc63ed
 d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
@@ -39,31 +49,72 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "main"#) -}
-bfbb1654449b1f0265b09b1950884d31
+c1fbdbf4a23b9862625d7d06aa71f359
   main :: GHC.Types.IO ()
-  {- Arity: 1, Strictness: <S,U>,
+  {- Arity: 1,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-f1ed0f2d81f1c07f5b81f4c2841e6306
+7826074fbaa4eda00871d3b51b303f69
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
-  {- Arity: 1, Strictness: <S,U>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (eta :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                 GHC.IO.Handle.Text.hPutStr2
-                   GHC.IO.Handle.FD.stdout
-                   (Data.OldList.unlines Data.grid)
-                   GHC.Types.True
-                   eta) -}
-fb09f0f407039f23872a87d560806f92
-  main2 ::
+  {- Arity: 1, Unfolding: (Main.main7 Main.main2) -}
+ec0f468850dbff27dd89f62f33451582
+  main2 :: Lib.Game
+  {- Strictness: m, Unfolding: (Lib.Game Main.main5 Main.main3) -}
+f2633e97e03f98857edb9f0f1e685a13
+  main3 ::
+    Data.Map.Base.Map GHC.Base.String (GHC.Base.Maybe [Lib.Cell])
+  {- Unfolding: (Lib.$sfromList
+                   @ (GHC.Base.Maybe [Lib.Cell])
+                   Main.main4) -}
+89e7771f9a95e735a5398b12ac6a5b42
+  main4 :: [(GHC.Base.String, GHC.Base.Maybe [Lib.Cell])]
+  {- Unfolding: (GHC.Base.map
+                   @ [GHC.Types.Char]
+                   @ (GHC.Base.String, GHC.Base.Maybe [Lib.Cell])
+                   Lib.makeGame1
+                   Data.languages) -}
+f5e669d101f28634e6997a5a376fb26b
+  main5 :: [[Lib.Cell]]
+  {- Unfolding: (GHC.List.zipWith
+                   @ [(GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)]
+                   @ [GHC.Types.Char]
+                   @ [Lib.Cell]
+                   Main.main6
+                   Lib.gridWithCoords1
+                   Data.grid) -}
+1b72144adf4614dd1e4f26be9fdd01b9
+  main6 ::
+    [(GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)]
+    -> [GHC.Types.Char] -> [Lib.Cell]
+  {- Arity: 2, HasNoCafRefs,
+     Unfolding: (GHC.List.zipWith
+                   @ (GHC.Integer.Type.Integer, GHC.Integer.Type.Integer)
+                   @ GHC.Types.Char
+                   @ Lib.Cell
+                   Lib.Cell) -}
+b7657f1efeb11a81dec6be85ef3d5b98
+  main7 ::
+    Lib.Game
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 2, Strictness: <L,U(U,U)><S,U> -}
+b19954994ff3f60fd55169d208b05832
+  main8 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1,
      Unfolding: (GHC.TopHandler.runMainIO1
                    @ ()
                    Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R))) -}
+a45f1211cf1409b99d5c69bd15bc295d
+  playTurn :: Lib.Game -> GHC.Types.IO ()
+  {- Arity: 2, Strictness: <L,U(U,U)><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                Main.main7
+                  `cast`
+                (<Lib.Game>_R ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

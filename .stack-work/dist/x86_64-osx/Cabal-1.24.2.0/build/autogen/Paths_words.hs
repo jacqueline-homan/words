@@ -30,7 +30,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/Users/jacquelinehoman/Projects/Haskell/WordGame/words/.stack-work/install/x86_64-osx/lts-9.14/8.0.2/bin"
-libdir     = "/Users/jacquelinehoman/Projects/Haskell/WordGame/words/.stack-work/install/x86_64-osx/lts-9.14/8.0.2/lib/x86_64-osx-ghc-8.0.2/words-0.1.0.0-CYI3KknegDpJL5eLhQz4hl"
+libdir     = "/Users/jacquelinehoman/Projects/Haskell/WordGame/words/.stack-work/install/x86_64-osx/lts-9.14/8.0.2/lib/x86_64-osx-ghc-8.0.2/words-0.1.0.0-2BohWveyA5lK0ewgybZufq"
 dynlibdir  = "/Users/jacquelinehoman/Projects/Haskell/WordGame/words/.stack-work/install/x86_64-osx/lts-9.14/8.0.2/lib/x86_64-osx-ghc-8.0.2"
 datadir    = "/Users/jacquelinehoman/Projects/Haskell/WordGame/words/.stack-work/install/x86_64-osx/lts-9.14/8.0.2/share/x86_64-osx-ghc-8.0.2/words-0.1.0.0"
 libexecdir = "/Users/jacquelinehoman/Projects/Haskell/WordGame/words/.stack-work/install/x86_64-osx/lts-9.14/8.0.2/libexec"

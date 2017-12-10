@@ -14,6 +14,13 @@
   (major1) == 4 && (major2) <  9 || \
   (major1) == 4 && (major2) == 9 && (minor) <= 1)
 
+/* package containers-0.5.7.1 */
+#define VERSION_containers "0.5.7.1"
+#define MIN_VERSION_containers(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  5 || \
+  (major1) == 0 && (major2) == 5 && (minor) <= 7)
+
 /* package hspec-2.4.4 */
 #define VERSION_hspec "2.4.4"
 #define MIN_VERSION_hspec(major1,major2,minor) (\
@@ -91,7 +98,7 @@
   (major1) == 0 && (major2) <  29 || \
   (major1) == 0 && (major2) == 29 && (minor) <= 2)
 
-#define CURRENT_COMPONENT_ID "words-0.1.0.0-CYI3KknegDpJL5eLhQz4hl"
+#define CURRENT_COMPONENT_ID "words-0.1.0.0-2BohWveyA5lK0ewgybZufq"
 
-#define CURRENT_PACKAGE_KEY "words-0.1.0.0-CYI3KknegDpJL5eLhQz4hl"
+#define CURRENT_PACKAGE_KEY "words-0.1.0.0-2BohWveyA5lK0ewgybZufq"
 
